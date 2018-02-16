@@ -11,7 +11,6 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-            ;
             //SimpleMatrix.Matrix ghj = new SimpleMatrix.Matrix(3,2, new []{1,2,3,4,5,6.0}) ;
 
             /*

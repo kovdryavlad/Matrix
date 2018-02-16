@@ -30,7 +30,7 @@ namespace SimpleMatrix
     public class DeterminantException:MatrixException
     {
         public DeterminantException()
-            :base("При поске детерминанта, на одном из шагов, был получен столбец в котором содержатся одни нули.")
+            :base("При поиске детерминанта, на одном из шагов, был получен столбец в котором содержатся одни нули.")
         {
 
         }

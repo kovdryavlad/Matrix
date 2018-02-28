@@ -21,17 +21,21 @@ namespace Matrix
             t[1, 1] = 6;
             
            
-
+            */
             SimpleMatrix.Matrix t = new SimpleMatrix.Matrix(7,7, new[]{
               1.6,       7,     10,    330,    -9,     25,    1.3, 
-                0,       0,      7,     -7,     0,     11,    457,
-                0,       0,    -10,     33,    12,      7,     23,
-                0,       0,     56,     89,    45,     66,     -1,
-                0,       0,    567,     12,   -90,     34,     12,
-                0,       0,     67,     -8,     0,      0,      0,
-                0,       0,      3,    0.3,     0,      0,      0
+                1,       9,      7,     -7,     0,     11,    457,
+                2,       6,    -10,     33,    12,      7,     23,
+              2.5,       0,     56,     89,    45,     66,     -1,
+                3,     0.5,    567,     12,   -90,     34,     12,
+                3,       0,     67,     -8,     0,      0,      0,
+               11,       0,      3,    0.3,     0,      0,      0
             });
-            */
+            var r = t.GetRow(0);
+            var u = t[0, 3];
+            var minor = t.GetMinor(6,6);
+ 
+            ;
             /*
             t[0, 0] = 1;
             t[0, 1] = 2;
@@ -119,7 +123,7 @@ namespace Matrix
                 Console.WriteLine(solve[i]);
             }
             */
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         private static void DOSMTH(SimpleMatrix.Matrix t)

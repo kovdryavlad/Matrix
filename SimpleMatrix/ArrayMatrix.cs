@@ -14,7 +14,7 @@ namespace SimpleMatrix
     {
         //возвращает нужный зубчастыЙ массив
         /// <summary>
-        /// Нахождение зубчастого масссива
+        /// Получение инициализированного зубчастого массива
         /// </summary>
         /// <param name="rows">Количество строк</param>
         /// <param name="columns">Количество колонок</param> 
@@ -108,7 +108,7 @@ namespace SimpleMatrix
         private static double Mult1(double[][] AA, int ii, double[][] BB, int jj)
         {
             double Sum = 0;
-           
+
             int ACols = AA[0].Length;
             for (int i = 0; i < ACols; i++)
                 Sum += AA[ii][i] * BB[jj][i];
@@ -130,7 +130,7 @@ namespace SimpleMatrix
             int CCols = B[0].Length;
 
             double[][] C = GetJaggedArray(CRows, CCols);
-            
+
             double[][] Bb = TransposeArr(B);
 
 
@@ -187,7 +187,7 @@ namespace SimpleMatrix
 
             for (int i = 0; i < ARows; i++)
                 for (int j = 0; j < ACols; j++)
-                    KMatrix[i][j] = A[i][j]*k;
+                    KMatrix[i][j] = A[i][j] * k;
 
             return KMatrix;
         }
@@ -260,7 +260,7 @@ namespace SimpleMatrix
         /// <returns>Новый массив</returns>
         //поменять местами строки
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double[][] SwapRows(double[][]data, int rowA, int rowB)
+        public static double[][] SwapRows(double[][] data, int rowA, int rowB)
         {
             var dataClone = (double[][])data.Clone();
 
@@ -318,6 +318,35 @@ namespace SimpleMatrix
             var transposed = TransposeArr(matrix);
 
             return GetRow(transposed, numberOfColumn);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double[][] GetMinor(double[][] matrix, int row, int column)
+        {
+            var size = matrix.GetLength(0);
+            var minor = GetJaggedArray(size - 1, size - 1);
+
+            int tempRow = 0;
+            int tempColumn = 0;
+
+            for (int i = 0; i < size; i++)
+            {
+                if (row == i)
+                    continue;
+
+                tempColumn = 0;
+                for (int j = 0; j < size; j++)
+                {
+                    if (j == column)
+                        continue;
+
+                    minor[tempRow][tempColumn] = matrix[i][j];
+                    tempColumn++;
+                }
+                tempRow++;
+            }
+
+            return minor;
         }
     }
 }

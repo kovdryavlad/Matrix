@@ -318,7 +318,34 @@ namespace SimpleMatrix
             if (numberOfColumn < 0 || numberOfColumn >= cols)
                 throw new NonExtistColumnException();
 
+            //так же обраюотать ошибки выхода за границы существующих столбцов и строк
+
             return new Vector(ArrayMatrix.GetColumn(data, numberOfColumn));
+        }
+
+        /// <summary>
+        /// Получает минор(алгебраическое дополнение)
+        /// </summary>
+        /// <param name="row">Строка для вычеркивания</param>
+        /// <param name="column">Столбец для вычеркивания</param>
+        /// <returns>Новая матрица</returns>
+        public Matrix GetMinor(int row, int column)
+        {
+            if (!IsSquare())
+                throw new NonSquareMatrixException();
+
+            var size = Rows;
+
+            if (size < 3)
+                throw new MatrixOperationException("Для поиска алгебраического дополнения нужна квадратная матрица размерностью больше 3");
+
+            if (row < 0 || row >= size)
+                throw new ArgumentException("Попытка доступа к несуществующей строке", "row");
+
+            if (column < 0 || column >= size)
+                throw new ArgumentException("Попытка доступа к несуществующему столбцу", "Column");
+
+            return new Matrix(ArrayMatrix.GetMinor(data, row, column));
         }
 
         /// <summary>

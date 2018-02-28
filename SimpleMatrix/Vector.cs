@@ -8,9 +8,20 @@ namespace SimpleMatrix
     //понаследовать от нее ошибки сложения и вычитания векторов или ошибку разници длин вектора
 
     //вся работа с векторами
+    /*!
+ \brief Vector
+ \author Vlad Kovdrya
+ \warning Работа только с векторами
+
+ Класс для работы с векторами. */
     public class Vector:ICloneable
     {
         //единичный ли?
+        /// <summary>
+        /// Проверка вектора на единичность
+        /// </summary>
+        /// <param name="A">Vector</param>
+        /// <returns>Bool answer</returns>
         internal static bool IsUnit(Vector A)
         {
             double Sum = A.data.Sum();
@@ -31,8 +42,9 @@ namespace SimpleMatrix
         }
 
         /// <summary>
-        /// Возвращает нормированный вектор
+        /// Нахождение нормированного вектора
         /// </summary>
+        /// <returns>Нормированный вектор</returns>
         public Vector Normilize()
         {
             //норма вектора
@@ -43,24 +55,44 @@ namespace SimpleMatrix
 
             return Vector.Create.New(normilized);
         }
-
+        /// <summary>
+        /// Клонирование вектора
+        /// </summary>
+        /// <returns>Вектор</returns>
         public object Clone()
         {
             return new Vector((double[])data.Clone());
         }
 
         //переопределение умножения
+        /// <summary>
+        /// Умножение вектора на число
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="V">Вектор</param>
+        /// <returns>Новый вектор</returns>
         public static Vector operator *(double k, Vector V)
         {
             return new Vector(ArrayVector.MultiplyOnK(k, V.data));
         }
-        
+
         //переопределение деления
+        /// <summary>
+        /// Деление вектора на число
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="V">Вектор</param>
+        /// <returns>Новый вектор</returns>
         public static Vector operator /(Vector V, double k)
         {
             return new Vector(ArrayVector.DivideOnK(V.data, k));
         }
-
+        /// <summary>
+        /// Сумирование векторов
+        /// </summary>
+        /// <param name="a">Первый вектор</param>
+        /// <param name="b">Второй вектор</param>
+        /// <returns>Новый вектор</returns>
         public static Vector operator +(Vector a, Vector b)
         {
             if (a.CanAdd(b))
@@ -68,7 +100,12 @@ namespace SimpleMatrix
             else
                 throw new Exception();
         }
-
+        /// <summary>
+        /// Разность векторов
+        /// </summary>
+        /// <param name="a">Первый вектор</param>
+        /// <param name="b">Второй вектор</param>
+        /// <returns>Новый вектор</returns>
         public static Vector operator -(Vector a, Vector b)
         {
             if (a.CanAdd(b))
@@ -78,6 +115,11 @@ namespace SimpleMatrix
         }
 
         //можно ли слаживать
+        /// <summary>
+        /// Проверка вектора перед сложнием
+        /// </summary>
+        /// <param name="b">Вектор</param>
+        /// <returns>Bool</returns>
         public bool CanAdd(Vector b)
         {
             if (data.Length == b.Length)
@@ -90,6 +132,10 @@ namespace SimpleMatrix
         internal double[] data;
 
         //конструктор
+        /// <summary>
+        /// Констректор вектора
+        /// </summary>
+        /// <param name="array">Массив</param>
         public Vector(double[] array)
         {
             data = (double[])array.Clone();
@@ -102,7 +148,7 @@ namespace SimpleMatrix
 
         //индексатор
         /// <summary>
-        /// Возвращает или устанавливает элемент матрицы
+        /// Возвращает или устанавливает элемент матрицы (индексатор)
         /// </summary>
         /// <param name="i">Индекс</param>
         public double this[int i]
@@ -115,11 +161,19 @@ namespace SimpleMatrix
         /// <summary>
         /// Фабрики для создания векторов
         /// </summary>
+          /*!
+ \brief VectorCreat
+ \author Vlad Kovdrya
+ \warning Работа только с векторами
+
+ Класс для создания векторов. */
         public static class Create
         {
             /// <summary>
-            /// Создает нулевой вектор длинной  n
+            /// Создание нулевого вектора
             /// </summary>
+            /// <param name="n">Длинна</param>
+            /// <returns>Вектор</returns>
             public static Vector New(int n)
             {
                 var arr = new double[n];
@@ -128,19 +182,21 @@ namespace SimpleMatrix
             }
 
             /// <summary>
-            /// Создает ненулевой вектор из готовых коэффициентов 
+            /// Создание ненулевого вектора из готовых коеффициентов
             /// </summary>
+            /// /// <param name="array">Массив</param>
+            /// <returns>Вектор</returns>
             public static Vector New(double[] array)
             {
                 return new Vector(array);
             }
 
             /// <summary>
-            /// Вернет единичный вектор (i элемент равен 1, остальные - 0)
+            /// Преобразование. Возвращает единичный вектор (i элемент равен 1, остальные - 0)
             /// </summary>
             /// <param name="n">Длинна вектора</param>
             /// <param name="i">Элемент, который установится в 1</param>
-            /// <returns></returns>
+            /// <returns>Вектор</returns>
             public static Vector Unit(int n, int i)
             {
                 Vector A = New(n);
@@ -149,7 +205,10 @@ namespace SimpleMatrix
                 return A;
             }
         }
-
+        /// <summary>
+        /// Запись вектора в строку
+        /// </summary>
+        /// <returns>Строка</returns>
         public override string ToString()
         {
             string s = "(";

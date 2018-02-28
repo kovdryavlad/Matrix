@@ -4,6 +4,12 @@ using System.Linq;
 namespace SimpleMatrix
 {
     //решение тридиагональных матриц 
+    /*!
+ \brief ThreeDiagonalMatrix
+ \author Vlad Kovdrya
+ \warning Работа только с трехдиагональными матрицами
+
+ Класс для работы с трехдиагональными матрицами. */
     internal static class TridiagonalMatrixSolving
     {
         /// <summary>
@@ -42,7 +48,7 @@ namespace SimpleMatrix
         /// </summary>
         /// <param name="inputMatrix">Матрица</param>
         /// <param name="f">Правая часть(стоблец)</param>
-        /// <returns>вектор иксов</returns>
+        /// <returns>Вектор иксов</returns>
         public static double[] Normal(double[][] inputMatrix, double[] f)
         {
             int N = inputMatrix.Length;
@@ -98,8 +104,16 @@ namespace SimpleMatrix
 
             return x;
         }
-        
+
         //циклическая прогонка
+        /// <summary>
+        /// Цклическая прогонка 
+        /// </summary>
+        /// <param name="a">vector a</param>
+        /// <param name="b">vector b</param>
+        /// <param name="c">vector c</param>
+        /// <param name="f">vector f</param>
+        /// <returns>Y</returns>
         public static double[] Cyclyc(double[] a, double[] c, double[] b, double[] f)
         {
             //для математических формул где нумерация начинается с единицы
@@ -160,7 +174,14 @@ namespace SimpleMatrix
 
             return y;
         }
-
+        /// <summary>
+        /// Цикл без отрицательных значений для циклической прогонки 
+        /// </summary>
+        /// <param name="a">vector a</param>
+        /// <param name="b">vector b</param>
+        /// <param name="c">vector c</param>
+        /// <param name="f">vector f</param>
+        /// <returns>Y</returns>
         public static double[] CyclycWithoutMinuses(double[] a, double[] c, double[] b, double[] f)
         {
             int N = f.Length + 1;

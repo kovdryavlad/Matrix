@@ -6,8 +6,18 @@ using Algebra;
 
 namespace SimpleMatrix
 {
+    /*!
+ \brief LaverierFadeevaMethod
+ \author Vlad Kovdrya
+
+ Метод Лверье Фадеева
+ */
     public static class LaverierFadeevaMethod
     {
+        /// <summary>
+        /// Нахождение решения с помощью метода Лверье Фадеева
+        /// </summary>
+        /// <returns></returns>
         public static LaverrierFadeevaMethodResult Solve(Matrix A, LaverierFadeevaSolvingOptions options)
         {
             int size = ValidateInputMatrix(A);  //валидация входной матрицы + в случае успеха получение размера матрицы
@@ -41,6 +51,7 @@ namespace SimpleMatrix
             var eigenVectors = GetEigenVectors(E, lstB.ToArray(),eigenValues, size);
 
             result.EigenValues = eigenValues;
+            //result.EigenVectors = eigenVectors.Select(vct => vct.Normilize()).ToArray();
             result.EigenVectors = eigenVectors.ToArray();
 
             return result;
@@ -101,17 +112,20 @@ namespace SimpleMatrix
 
     }
 
-    //опции использования метода Лаверрье-Фадеева
+    ///Опции использования метода Лаверрье-Фадеева
     public enum LaverierFadeevaSolvingOptions
     {
-        FullSolving,
-        OnlyInverseOfMatrix
+        FullSolving,///<Полное использование метода
+        OnlyInverseOfMatrix///< Частичное использование метода. Только обратная матрица
     }
+    /*!
+  \brief  Результат  метода Лаверье Фадеева
 
+  Класс для работы с метдом Лаверье Фадеева */
     public class LaverrierFadeevaMethodResult
     {
-        public Matrix InverseMatrix { get; internal set; }       //обратная матрица
-        public double[] EigenValues { get; internal set; }       //собственные числа
-        public  Vector[] EigenVectors { get; internal set; }     //собственные векторы
+        public Matrix InverseMatrix { get; internal set; }       ///<Обратная матрица
+        public double[] EigenValues { get; internal set; }       ///<Собственные числа
+        public  Vector[] EigenVectors { get; internal set; }     ///<Собственные векторы
     }
 }

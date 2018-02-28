@@ -4,10 +4,21 @@ using System.Threading.Tasks;
 
 namespace SimpleMatrix
 {
+    /*!
+\brief  Массив матриц
+
+
+*/
     //операции над матрицами в виде зубчастых массивов
     public static class ArrayMatrix
     {
         //возвращает нужный зубчастыЙ массив
+        /// <summary>
+        /// Нахождение зубчастого масссива
+        /// </summary>
+        /// <param name="rows">Количество строк</param>
+        /// <param name="columns">Количество колонок</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] GetJaggedArray(int rows, int columns)
         {
@@ -18,8 +29,12 @@ namespace SimpleMatrix
 
             return array;
         }
-        
-        //сумма матриц
+        /// <summary>
+        /// Сумма
+        /// </summary>
+        /// <param name="A">Массив массивов 1</param>
+        /// <param name="B">Массив массивов 2</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] Sum(double[][] A, double[][] B)
         {
@@ -34,7 +49,12 @@ namespace SimpleMatrix
 
             return SumMatrix;
         }
-
+        /// <summary>
+        /// Разность
+        /// </summary>
+        /// <param name="A">Массив массивов 1</param>
+        /// <param name="B">Массив массивов 2</param> 
+        /// <returns>Новый массив</returns>
         //разница матриц
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] Difference(double[][] A, double[][] B)
@@ -50,8 +70,14 @@ namespace SimpleMatrix
 
             return DifferenceMatrix;
         }
-        
+
         //Умножение обычное N^3
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="A">Массив массивов 1</param>
+        /// <param name="B">Массив массивов 2</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] MultiplyN3(double[][] A, double[][] B)
         {
@@ -91,6 +117,12 @@ namespace SimpleMatrix
         }
 
         //быстрое умножение с использованием транспонирования
+        /// <summary>
+        /// Быстрое умножение (с использованием транспонирования)
+        /// </summary>
+        /// <param name="A">Массив массивов 1</param>
+        /// <param name="B">Массив массивов 2</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] MultiplyN3Transpose(double[][] A, double[][] B)
         {
@@ -112,6 +144,11 @@ namespace SimpleMatrix
             return C;
         }
 
+        /// <summary>
+        /// Транспонирование
+        /// </summary>
+        /// <param name="a">Массив</param>
+        /// <returns>Новый массив</returns>
         //транспонирование
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] TransposeArr(double[][] a)
@@ -134,6 +171,12 @@ namespace SimpleMatrix
         }
 
         //умножение на число
+        /// <summary>
+        /// Умножение на число
+        /// </summary>
+        /// <param name="A">Массив массивов</param>
+        /// <param name="k">Число</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] MultiplyOnk(double k, double[][] A)
         {
@@ -150,6 +193,12 @@ namespace SimpleMatrix
         }
 
         //деление на число
+        /// <summary>
+        /// Деление на число
+        /// </summary>
+        /// <param name="A">Массив массивов</param>
+        /// <param name="k">Число</param> 
+        /// <returns>Новый массив</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] DivideOnk(double[][] A, double k)
         {
@@ -164,7 +213,11 @@ namespace SimpleMatrix
 
             return KMatrix;
         }
-        
+        /// <summary>
+        /// Создание единичной матрицы
+        /// </summary>
+        /// <param name="n">Размер</param>
+        /// <returns>Новый массив</returns>
         //возвращает единичную матрицу заданого размера
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] GetIdentity(int n)
@@ -178,7 +231,11 @@ namespace SimpleMatrix
 
             return arr;
         }
-
+        /// <summary>
+        /// Создание диагональной матрицы
+        /// </summary>
+        /// <param name="vector">Вектор</param>
+        /// <returns>Новый массив</returns>
         //создать дианональную матрицу 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] GetDiagonal(double[] vector)
@@ -194,7 +251,13 @@ namespace SimpleMatrix
 
             return arr;
         }
-
+        /// <summary>
+        /// Изменения порядка строк
+        /// </summary>
+        /// <param name="rowA">Номер строки первого массива </param>
+        ///  <param name="data">Массив</param>
+        ///  <param name="rowB">Номер строки второго массива </param>
+        /// <returns>Новый массив</returns>
         //поменять местами строки
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[][] SwapRows(double[][]data, int rowA, int rowB)
@@ -208,7 +271,11 @@ namespace SimpleMatrix
 
             return dataClone;
         }
-        
+        /// <summary>
+        /// Нахождение диагонали
+        /// </summary>
+        /// <param name="matrix">Матрица</param>
+        /// <returns>Новый массив</returns>
         //получить диагональ
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[] GetDiagonal(double[][] matrix)
@@ -224,7 +291,12 @@ namespace SimpleMatrix
 
             return lst.ToArray();
         }
-
+        /// <summary>
+        /// Нахождение строки
+        /// </summary>
+        /// <param name="matrix">Матрица</param>
+        /// <param name="numberOfROw">номер строки</param>
+        /// <returns>Строка</returns>
         //получить строку
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[] GetRow(double[][] matrix, int numberOfROw)
@@ -233,7 +305,12 @@ namespace SimpleMatrix
 
             return row;
         }
-
+        /// <summary>
+        /// Нахождение столбца
+        /// </summary>
+        /// <param name="matrix">Матрица</param>
+        /// <param name="numberOfColumn">Номер колонки</param>
+        /// <returns>Столбец</returns>
         //получить столбец
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[] GetColumn(double[][] matrix, int numberOfColumn)

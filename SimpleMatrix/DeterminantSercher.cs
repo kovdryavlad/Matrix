@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace SimpleMatrix
 {
+    /*!
+ \brief  Детерминант
+
+ Класс для нахождения детерминанта
+ */
     public static class DeterminantSercher
     {
+        /// <summary>
+        /// Детерминант матрицы
+        /// </summary>
+        /// <param name="A">Матрица</param>
+        /// <returns>Детерминант</returns>
         public static double GetDeterminant(Matrix A)
         {
             if (!A.IsSquare())
@@ -21,11 +31,11 @@ namespace SimpleMatrix
                 //поиск максимума в столбце, свап срок и деление строки на макс. элемент 
                 Tuple<double, int, Matrix> temp = RowChanging(i, A, length);
                 A = temp.Item3;
-
-                //Делаем нули под максимальным элементов
+                
+                //Сделать нули под указанным элементом
                 DoNullsUnderCurrentlement(A, i, length);
 
-                //Накапливаем детерминат
+                //Накапливаем детерминант
                 determinant *= temp.Item1 * temp.Item2;
             }
 

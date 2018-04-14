@@ -11,6 +11,12 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
+            var v1 =new[] { 1d, 2, 3 };
+            var v2 =new[] { 5d, 6, 7 };
+
+            var joined = ArrayMatrix.Join(new[] { v1, v2 }.ToList());
+            SimpleMatrix.Matrix matrix = new SimpleMatrix.Matrix(joined);
+            ;
             //SimpleMatrix.Matrix ghj = new SimpleMatrix.Matrix(3,2, new []{1,2,3,4,5,6.0}) ;
 
             /*
@@ -22,6 +28,8 @@ namespace Matrix
             
            
             */
+
+            /*
             SimpleMatrix.Matrix t = new SimpleMatrix.Matrix(7,7, new[]{
               1.6,       7,     10,    330,    -9,     25,    1.3, 
                 1,       9,      7,     -7,     0,     11,    457,
@@ -34,8 +42,8 @@ namespace Matrix
             var r = t.GetRow(0);
             var u = t[0, 3];
             var minor = t.GetMinor(6,6);
- 
-            ;
+            */
+            
             /*
             t[0, 0] = 1;
             t[0, 1] = 2;
@@ -59,6 +67,7 @@ namespace Matrix
             // SimpleMatrix.Matrix B = SimpleMatrix.Matrix.Create.New(3, 4);
             */
             
+            /*
             SimpleMatrix.Matrix A = SimpleMatrix.Matrix.Create.New(4,4);
             A[0, 0] = 2.2;
             A[0,1]= 1;
@@ -83,6 +92,8 @@ namespace Matrix
 
             var res = LaverierFadeevaMethod.Solve(A, LaverierFadeevaSolvingOptions.FullSolving);
             var a = -11;
+            */
+
             /*
             int s = 1000;
             

@@ -162,4 +162,12 @@ namespace SimpleMatrix
 
         }
     }
+    
+    public class VectorsJoinException : Exception
+    {
+        public VectorsJoinException(): base("Разная длинна векторов при их объединении в матрицу")
+        {
+
+        }
+    }
 }

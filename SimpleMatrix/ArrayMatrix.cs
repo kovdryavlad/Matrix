@@ -348,5 +348,21 @@ namespace SimpleMatrix
 
             return minor;
         }
+
+        //соединение векторов в матрицу
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double[][] Join(List<double[]> cols)
+        {
+            int rows = cols[0].Length;
+            int colsLen = cols.Count;
+
+            var matrix = GetJaggedArray(rows, colsLen);
+
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < colsLen; j++)
+                    matrix[i][j] = cols[j][i];
+
+            return matrix;
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 
 /*!
@@ -560,6 +562,44 @@ namespace SimpleMatrix
             public static Matrix Diagonal(Vector v)
             {
                 return Diagonal(v.data);    
+            }
+
+            /// <summary>
+            /// Соединяет вектора в матрицу
+            /// </summary>
+            /// <param name="vectors">Список векторов</param>
+            /// <returns>Новая матрица</returns>
+            public static Matrix JoinVectors(List<double[]> vectors)
+            {
+                var ListLen = vectors.Count;
+
+                if (ListLen < 2)
+                    throw new ArgumentException("количество вектором должно быть больше 1", "vectors");
+
+                int VLen = vectors[0].Length;
+                for (int i = 1; i < ListLen; i++)
+                    if (vectors[i].Length != VLen)
+                        throw new VectorsJoinException();
+
+                return new Matrix(ArrayMatrix.Join(vectors));
+            }
+
+            /// <summary>
+            /// Соединяет вектора в матрицу
+            /// </summary>
+            /// <param name="vectors">Список векторов</param>
+            /// <returns>Новая матрица</returns>
+            public static Matrix JoinVectors(IEnumerable<Vector> vectors)
+            {
+                List<Vector> inputlst = vectors.ToList();
+                int n = inputlst.Count;
+
+                List<double[]> outLst = new List<double[]>();
+
+                for (int i = 0; i < n; i++)
+                    outLst.Add(inputlst[i].data);
+
+                return JoinVectors(outLst);
             }
         }
         /// <summary>

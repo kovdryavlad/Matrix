@@ -170,4 +170,13 @@ namespace SimpleMatrix
 
         }
     }
+
+    public class VectorsSizeException : Exception
+    {
+        public VectorsSizeException() : base("Разная длинна векторов недопустима при выполнении данной операции!")
+        {
+
+        }
+    }
+
 }

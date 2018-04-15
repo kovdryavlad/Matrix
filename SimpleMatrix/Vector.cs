@@ -98,7 +98,7 @@ namespace SimpleMatrix
             if (a.CanAdd(b))
                 return new Vector(ArrayVector.Sum(a.data,b.data));
             else
-                throw new Exception();
+                throw new VectorsSizeException();
         }
         /// <summary>
         /// Разность векторов
@@ -111,7 +111,21 @@ namespace SimpleMatrix
             if (a.CanAdd(b))
                 return new Vector(ArrayVector.Substruct(a.data, b.data));
             else
-                throw new Exception();
+                throw new VectorsSizeException();
+        }
+
+        /// <summary>
+        /// Умножение двух векторов(Подразумевается умножение вектора-столбца на вектор-строку, но приводить их к такому виду не нужно)
+        /// </summary>
+        /// <param name="a">Первый вектор</param>
+        /// <param name="b">Второй вектор</param>
+        /// <returns>Новый вектор</returns>
+        public static double operator *(Vector a, Vector b)
+        {
+            if (a.CanAdd(b))
+                return ArrayVector.Multiply(a.data, b.data);
+            else
+                throw new VectorsSizeException();
         }
 
         //можно ли слаживать

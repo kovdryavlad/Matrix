@@ -71,5 +71,22 @@
 
             return newArr;
         }
+
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="arr1">Первый массив</param>
+        /// <param name="arr2">Второй массив</param> 
+        /// <returns>Новый массив</returns>
+        public static double Multiply(double[] arr1, double[] arr2)
+        {
+            var length = arr1.Length;
+            double sum = 0;
+
+            for (int i = 0; i < length; i++)
+                sum += arr1[i] * arr2[i];
+
+            return sum;
+        }
     }
 }

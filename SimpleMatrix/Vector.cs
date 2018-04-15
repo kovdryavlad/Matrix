@@ -100,6 +100,7 @@ namespace SimpleMatrix
             else
                 throw new VectorsSizeException();
         }
+
         /// <summary>
         /// Разность векторов
         /// </summary>

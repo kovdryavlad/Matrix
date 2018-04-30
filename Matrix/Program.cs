@@ -11,15 +11,21 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
+            /*
             var v1 =new[] { 1d, 2, 3 };
             var v2 =new[] { 5d, 6, 7 };
 
-            var joined = ArrayMatrix.Join(new[] { v1, v2 }.ToList());
-            SimpleMatrix.Matrix matrix = new SimpleMatrix.Matrix(joined);
+            Vector aa = new Vector(v1);
+            Vector ab = new Vector(v2);
+            var T = 12*aa;
+            var T2 = ab * aa;
+            ;
+            //var joined = ArrayMatrix.Join(new[] { v1, v2 }.ToList());
+            //SimpleMatrix.Matrix matrix = new SimpleMatrix.Matrix(joined);
             ;
             //SimpleMatrix.Matrix ghj = new SimpleMatrix.Matrix(3,2, new []{1,2,3,4,5,6.0}) ;
 
-            /*
+            
             SimpleMatrix.Matrix t = SimpleMatrix.Matrix.Create.New(2);
             t[0, 0] = 3;
             t[0, 1] = 4;
@@ -39,11 +45,22 @@ namespace Matrix
                 3,       0,     67,     -8,     0,      0,      0,
                11,       0,      3,    0.3,     0,      0,      0
             });
-            var r = t.GetRow(0);
-            var u = t[0, 3];
-            var minor = t.GetMinor(6,6);
+            //var r = t.GetRow(0);
+            //var u = t[0, 3];
+            var det = t.Determinant();
+            ;
             */
-            
+
+            SimpleMatrix.Matrix t = new SimpleMatrix.Matrix(3,3, new[]{
+              1.0, 2, 3,
+                3, 4, 5,
+                1, 3, 3
+            });
+
+            var det = t.Determinant();
+            var det2 = t.Determinant();
+            ;
+
             /*
             t[0, 0] = 1;
             t[0, 1] = 2;
@@ -66,7 +83,7 @@ namespace Matrix
             Console.WriteLine("Time:{0}", (t2 - t1).TotalSeconds);
             // SimpleMatrix.Matrix B = SimpleMatrix.Matrix.Create.New(3, 4);
             */
-            
+
             /*
             SimpleMatrix.Matrix A = SimpleMatrix.Matrix.Create.New(4,4);
             A[0, 0] = 2.2;

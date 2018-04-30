@@ -20,6 +20,8 @@ namespace SimpleMatrix
         /// <returns>Детерминант</returns>
         public static double GetDeterminant(Matrix A)
         {
+            A = (Matrix)A.Clone();
+
             if (!A.IsSquare())
                 throw new NonSquareMatrixException();
 

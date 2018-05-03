@@ -11,6 +11,10 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
+            SimpleMatrix.Matrix a = new SimpleMatrix.Matrix(3, 3, new[] {2d,3,4,1,3,3,0,4,4});
+            Vector v = new Vector(new double[] { 20, 16, 20d });
+            var r = a.Solve(v);
+            ;
             /*
             var v1 =new[] { 1d, 2, 3 };
             var v2 =new[] { 5d, 6, 7 };

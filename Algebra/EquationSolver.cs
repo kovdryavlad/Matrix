@@ -157,7 +157,7 @@ namespace Algebra
     public enum SolverOptions
     {
         ContinueToMinStep,                  //продоллжать до минимального шага
-        StopIfNumberOfRootsCeasedIncrease   //остановиться если количество корней перестало величиваться
+        StopIfNumberOfRootsCeasedIncrease   //остановиться если количество корней перестало увеличиваться
     }
 
     public class RootsLimist

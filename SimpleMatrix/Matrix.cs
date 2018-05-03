@@ -70,6 +70,32 @@ namespace SimpleMatrix
                 throw new MatrixMultiplyException();
         }
 
+        /// <summary>
+        /// умножение текущей матрицы на вектор-столбец
+        /// </summary>
+        public Vector MultiplyOnVectorColumn(Vector vector)
+        {
+            int length = vector.Length;
+            var data = vector.data;
+            Matrix MatrixforVector = new Matrix(length, 1, data);
+
+            Matrix ResultMatrix = this * MatrixforVector;
+            return ResultMatrix.GetColumn(0);
+        }
+
+        /// <summary>
+        /// умножение текущей матрицы на вектор-строку
+        /// </summary>
+        public Matrix MultiplyOnVectorRow(Vector vector)
+        {
+            int length = vector.Length;
+            var data = vector.data;
+            Matrix MatrixforVector = new Matrix(1, length, data);
+
+            return this * MatrixforVector;
+        }
+
+
         //умножение матриц
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static Matrix MultiplyN3(Matrix A, Matrix B)
@@ -450,6 +476,27 @@ namespace SimpleMatrix
         public double Determinant()
         {
             return DeterminantSercher.GetDeterminant(this);
+        }
+
+        /// <summary>
+        /// Получение обратной матрицы
+        /// </summary>
+        /// <returns>Обратная матрица</returns>
+        public Matrix Inverse()
+        {
+            var LFResult = LaverierFadeevaMethod.Solve(this, LaverierFadeevaSolvingOptions.OnlyInverseOfMatrix);
+
+           return LFResult.InverseMatrix;
+        }
+
+        /// <summary>
+        /// Решение системы матричным методом
+        /// </summary>
+        /// <param name="b">вектор после знака =</param>
+        /// <returns></returns>
+        public Vector Solve(Vector b)
+        {
+            return MatrixSolving.ByMatrixMathod(this, b);
         }
 
         //вложенный класс, отвечающий за создание матриц

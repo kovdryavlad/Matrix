@@ -46,6 +46,7 @@
     <Compile Include="ArrayVector.cs" />
     <Compile Include="DeterminantSercher.cs" />
     <Compile Include="LaverierFadeevaSolving.cs" />
+    <Compile Include="MatrixSolving.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

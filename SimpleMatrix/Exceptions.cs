@@ -58,6 +58,16 @@ namespace SimpleMatrix
 
         }
     }
+
+    public class DeterminantNullException : MatrixException
+    {
+        public DeterminantNullException()
+            : base("Нулевой детерминант!")
+        {
+
+        }
+    }
+
     /// <summary>
     /// Ошибка операции над матрицей
     /// </summary>
@@ -162,7 +172,16 @@ namespace SimpleMatrix
 
         }
     }
-    
+
+    public class MatrixSolvingExcepton: MatrixException
+    {
+        public MatrixSolvingExcepton():
+            base("Несовпадение размерности матрицы и длинны вектора")
+        {
+
+        }
+    }
+
     public class VectorsJoinException : Exception
     {
         public VectorsJoinException(): base("Разная длинна векторов при их объединении в матрицу")

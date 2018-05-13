@@ -64,6 +64,11 @@ namespace SimpleMatrix
             return new Vector((double[])data.Clone());
         }
 
+        public double[] GetCloneOfData()
+        {
+            return (double[])data.Clone();
+        }
+
         //переопределение умножения
         /// <summary>
         /// Умножение вектора на число
@@ -113,6 +118,17 @@ namespace SimpleMatrix
                 return new Vector(ArrayVector.Substruct(a.data, b.data));
             else
                 throw new VectorsSizeException();
+        }
+
+        public static Vector operator -(Vector a, double b)
+        {
+            var aclone = (Vector)a.Clone();
+
+            var array = aclone.data;
+            for (int i = 0; i < array.Length; i++)
+                array[i] -= b;
+
+            return aclone;
         }
 
         /// <summary>

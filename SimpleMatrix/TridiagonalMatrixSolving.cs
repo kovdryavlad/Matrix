@@ -10,7 +10,7 @@ namespace SimpleMatrix
  \warning Работа только с трехдиагональными матрицами
 
  Класс для работы с трехдиагональными матрицами. */
-    internal static class TridiagonalMatrixSolving
+    public static class TridiagonalMatrixSolving
     {
         /// <summary>
         /// Делит тридиагональную матрицу (квадратный массив) на три одмомерных массива

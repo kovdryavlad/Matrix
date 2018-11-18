@@ -106,6 +106,17 @@ namespace SimpleMatrix
                 throw new VectorsSizeException();
         }
 
+        public static Vector operator +(Vector a, double b)
+        {
+            var aclone = (Vector)a.Clone();
+
+            var array = aclone.data;
+            for (int i = 0; i < array.Length; i++)
+                array[i] += b;
+
+            return aclone;
+        }
+
         /// <summary>
         /// Разность векторов
         /// </summary>

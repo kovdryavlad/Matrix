@@ -399,7 +399,7 @@ namespace SimpleMatrix
         }
 
         //сама матрица
-        double[][] data;
+        public double[][] data;
 
         //вренет массив-матрицу по ссылке, а не его клон
         /// <summary>

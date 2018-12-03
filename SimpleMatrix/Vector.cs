@@ -156,6 +156,22 @@ namespace SimpleMatrix
                 throw new VectorsSizeException();
         }
 
+        public static Vector operator *(Vector a, Matrix b)
+        {
+            var aMatrix = new Matrix(new double[1][]{ a.data });
+            if (aMatrix.CanMultiply(b)) {
+
+                var resultMatrix = aMatrix * b;
+
+                return new Vector(resultMatrix.data[0]);
+            }
+                
+            else
+                throw new MultiplyingVectorOnmatrixException();
+        }
+
+
+
         //можно ли слаживать
         /// <summary>
         /// Проверка вектора перед сложнием

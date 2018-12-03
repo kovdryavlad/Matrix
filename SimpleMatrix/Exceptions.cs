@@ -198,4 +198,12 @@ namespace SimpleMatrix
         }
     }
 
+    public class MultiplyingVectorOnmatrixException : Exception
+    {
+        public MultiplyingVectorOnmatrixException() : base("Размерности вектораи матрицы не не позволяет произвести умножение")
+        {
+
+        }
+    }
+
 }

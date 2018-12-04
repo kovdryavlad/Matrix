@@ -44,8 +44,6 @@ namespace Algebra
             var lambda1 = FormLambdaForPolinom(сoefficients.ToArray());
             var lambda2 = FormLambdaForPolinom(сoefficients.ToArray());
 
-
-
             Func<double, double, Func<double, double>, List<Interval>> getIntervals = (a, b, polinom) =>
              {
                  double h = (b - a) / startIntervalsCount;
@@ -69,6 +67,8 @@ namespace Algebra
 
             do
             {
+                intervals.Clear();
+
                 Task<List<Interval>> t1 = Task<List<Interval>>.Run(() => getIntervals(Limits.NLower, Limits.NUpper, lambda1));
                 Task<List<Interval>> t2 = Task<List<Interval>>.Run(() => getIntervals(Limits.PLower, Limits.PUpper, lambda2));
                 
@@ -77,7 +77,7 @@ namespace Algebra
                 intervals.AddRange(t1.Result);
                 intervals.AddRange(t2.Result);
 
-                startIntervalsCount *= 2;    
+                startIntervalsCount *= 2;
             }
             while (numberOfroots != intervals.Count);
 

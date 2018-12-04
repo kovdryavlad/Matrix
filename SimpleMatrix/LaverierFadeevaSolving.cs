@@ -46,7 +46,7 @@ namespace SimpleMatrix
             if (options == LaverierFadeevaSolvingOptions.OnlyInverseOfMatrix)
                 return result;
 
-            double[] eigenValues = GetEigenValues(lstP.ToArray());    //получение собственных значений матрицы
+            double[] eigenValues = GetEigenValues(lstP.ToArray(), size);    //получение собственных значений матрицы
 
             var eigenVectors = GetEigenVectors(E, lstB.ToArray(),eigenValues, size);
 
@@ -69,7 +69,7 @@ namespace SimpleMatrix
         }
 
         //получение собственных значений матрицы  
-        private static double[] GetEigenValues(double[] p)
+        private static double[] GetEigenValues(double[] p, int numberOfRoots)
         {
             //по формуле, при построении полинома знаки коэфициентов около всех степеней, кроме старшей, меняются
             var SignChangedCoefs = p.Select(v => -v).ToList();
@@ -77,7 +77,8 @@ namespace SimpleMatrix
             //добавляем 1 для старшей степени
             SignChangedCoefs.Insert(0, 1);
 
-            return EquationSolver.GetRoots(SignChangedCoefs.ToArray());            
+            //return EquationSolver.GetRoots(SignChangedCoefs.ToArray(), 0.00000001, 0.1);            
+            return EquationSolver.GetRoots(SignChangedCoefs.ToArray(),numberOfRoots);            
         }
         
         //получене собственных векторов

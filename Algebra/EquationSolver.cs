@@ -11,16 +11,7 @@ namespace Algebra
     {
         public static double[] GetRoots(double[] сoefficients, double precision = 0.00000000000001, double InitialStep = 1, double MinStep = 0.25, SolverOptions options = SolverOptions.StopIfNumberOfRootsCeasedIncrease)
         {
-            var Limits = new RootsLimist();
-
-            //то же что и умножить на икс в высшей степени и подставить 1/x
-            var ReverceCoefs = сoefficients.Reverse().ToArray(); //Для фи1 и фи3
-
-            //поиск границ корней
-            Limits.PUpper = UpperLimitSearcher.GetUpperLimit(сoefficients);
-            Limits.PLower = 1d / UpperLimitSearcher.GetUpperLimit(ReverceCoefs);
-            Limits.NLower = -UpperLimitSearcher.GetUpperLimit(SubstituteNegativeArgument(сoefficients)); //минус там не зря)
-            Limits.NUpper = -1d / UpperLimitSearcher.GetUpperLimit(SubstituteNegativeArgument(ReverceCoefs));
+            RootsLimits Limits = GetRootsLimits(сoefficients);
 
             //отделение корнеЙ
             double h = InitialStep;
@@ -36,14 +27,83 @@ namespace Algebra
                 IntervalsWithHalfOfStep = GetIntervalsWithRoots(lambda, h / 2, Limits.NLower, Limits.NUpper, Limits.PLower, Limits.PUpper);
                 h /= 2;
             }
-            while (IntervalsWithNormalStep.Length!= IntervalsWithHalfOfStep.Length);
+            while (IntervalsWithNormalStep.Length != IntervalsWithHalfOfStep.Length);
 
             //уточнение корней
             double[] roots = ClarifyRoots(lambda, IntervalsWithHalfOfStep, precision);
-            
+
             return roots;
         }
-        
+
+        public static double[] GetRoots(double[] сoefficients, int numberOfroots, int startIntervalsCount = 64, double precision = 0.00000001)
+        {
+            RootsLimits Limits = GetRootsLimits(сoefficients);
+            List<Interval> intervals = new List<Interval>();
+            
+            //лямбда полинома с коефициентами
+            var lambda1 = FormLambdaForPolinom(сoefficients.ToArray());
+            var lambda2 = FormLambdaForPolinom(сoefficients.ToArray());
+
+
+
+            Func<double, double, Func<double, double>, List<Interval>> getIntervals = (a, b, polinom) =>
+             {
+                 double h = (b - a) / startIntervalsCount;
+
+                 double lBrd = 0;
+                 double rBrd = 0;
+
+                 List<Interval> result = new List<Interval>();
+
+                //для отрицательной части
+                for (double i = a; i < b; i = rBrd)
+                 {
+                     lBrd = i;
+                     rBrd = i + h;
+                     if (polinom(lBrd) * polinom(rBrd) < 0)
+                         result.Add(new Interval(lBrd, rBrd));
+                 }
+
+                 return result;
+             };
+
+            do
+            {
+                Task<List<Interval>> t1 = Task<List<Interval>>.Run(() => getIntervals(Limits.NLower, Limits.NUpper, lambda1));
+                Task<List<Interval>> t2 = Task<List<Interval>>.Run(() => getIntervals(Limits.PLower, Limits.PUpper, lambda2));
+                
+                Task.WaitAll((new[] { t1, t2 }));
+                
+                intervals.AddRange(t1.Result);
+                intervals.AddRange(t2.Result);
+
+                startIntervalsCount *= 2;    
+            }
+            while (numberOfroots != intervals.Count);
+
+
+            //уточнение корней
+            double[] roots = ClarifyRoots(lambda1, intervals.ToArray(), precision);
+
+            return roots;
+        }
+
+
+        private static RootsLimits GetRootsLimits(double[] сoefficients)
+        {
+            var Limits = new RootsLimits();
+
+            //то же что и умножить на икс в высшей степени и подставить 1/x
+            var ReverceCoefs = сoefficients.Reverse().ToArray(); ; //Для фи1 и фи3
+
+            //поиск границ корней
+            Limits.PUpper = UpperLimitSearcher.GetUpperLimit(сoefficients);
+            Limits.PLower = 1d / UpperLimitSearcher.GetUpperLimit(ReverceCoefs);
+            Limits.NLower = -UpperLimitSearcher.GetUpperLimit(SubstituteNegativeArgument(сoefficients)); //минус там не зря)
+            Limits.NUpper = -1d / UpperLimitSearcher.GetUpperLimit(SubstituteNegativeArgument(ReverceCoefs));
+            return Limits;
+        }
+
         //подставить -x
         private static double[] SubstituteNegativeArgument(double[] coefs)
         {
@@ -160,7 +220,7 @@ namespace Algebra
         StopIfNumberOfRootsCeasedIncrease   //остановиться если количество корней перестало увеличиваться
     }
 
-    public class RootsLimist
+    public class RootsLimits
     {
         public double NLower { get; internal set; } //N2
         public double NUpper { get; internal set; } //N3

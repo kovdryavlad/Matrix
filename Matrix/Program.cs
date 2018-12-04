@@ -11,9 +11,20 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-            SimpleMatrix.Matrix a = new SimpleMatrix.Matrix(3, 3, new[] {2d,3,4,1,3,3,0,4,4});
-            Vector v = new Vector(new double[] { 20, 16, 20d });
-            var r = a.Solve(v);
+            SimpleMatrix.Matrix m = new SimpleMatrix.Matrix(3, 3, new[] {
+
+                 2,  -1,  1.0,
+                -1,   2, -1,
+                 0,   0,  1
+
+            });
+
+            var res = LaverierFadeevaMethod.Solve(m, LaverierFadeevaSolvingOptions.FullSolving);
+            int o=0;
+
+            //SimpleMatrix.Matrix a = new SimpleMatrix.Matrix(3, 3, new[] {2d,3,4,1,3,3,0,4,4});
+            //Vector v = new Vector(new double[] { 20, 16, 20d });
+            //var r = a.Solve(v);
             ;
             /*
             var v1 =new[] { 1d, 2, 3 };

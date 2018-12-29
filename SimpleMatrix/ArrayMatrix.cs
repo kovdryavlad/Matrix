@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -213,6 +214,24 @@ namespace SimpleMatrix
 
             return KMatrix;
         }
+
+        internal static double[][] SetMainDiagonal(double[][] A,double[] diagonalElements)
+        {
+            int ARows = A.Length;
+            int ACols = A[0].Length;
+
+            double[][] resultMatrix = GetJaggedArray(ARows, ACols);
+
+            for (int i = 0; i < ARows; i++)
+                for (int j = 0; j < ACols; j++)
+                    if (i == j)
+                        resultMatrix[i][i] = diagonalElements[i];
+                    else
+                        resultMatrix[i][j] = A[i][j];
+
+            return resultMatrix;
+        }
+
         /// <summary>
         /// Создание единичной матрицы
         /// </summary>

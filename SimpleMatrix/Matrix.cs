@@ -211,6 +211,13 @@ namespace SimpleMatrix
             return Cmatrix;
         }
 
+        public Matrix SetMainDiagonal(double[] diagonalElements)
+        {
+            double[][] arr = ArrayMatrix.SetMainDiagonal(data, diagonalElements);
+
+            return new Matrix(arr);
+        }
+
         /// <summary>
         /// Метод проверяет можно ли суммировать матрицу с входной. 
         /// </summary>

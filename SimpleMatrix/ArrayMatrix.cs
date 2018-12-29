@@ -364,5 +364,19 @@ namespace SimpleMatrix
 
             return matrix;
         }
+
+        //клонирование
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double[][] Clone(double[][] arr)
+        {
+            int rows = arr.Length;
+
+            double[][] result = new double[rows][];
+
+            for (int i = 0; i < rows; i++)
+                result[i] = (double[])arr[i].Clone();
+
+            return result;
+        }
     }
 }

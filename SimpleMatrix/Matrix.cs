@@ -395,7 +395,7 @@ namespace SimpleMatrix
         /// <returns>Клонированая матрица</returns>
         public object Clone()
         {
-            return new Matrix((double[][])data.Clone());
+            return new Matrix(ArrayMatrix.Clone(data));
         }
 
         //сама матрица

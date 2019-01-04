@@ -627,8 +627,11 @@ namespace SimpleMatrix
             {
                 var ListLen = vectors.Count;
 
-                if (ListLen < 2)
-                    throw new ArgumentException("количество вектором должно быть больше 1", "vectors");
+                if (ListLen < 1)
+                    throw new ArgumentException("количество вектором должно быть больше 0", "vectors");
+
+                else if (ListLen == 1)
+                    return new Matrix(vectors[0].Length, 1, vectors[0]);
 
                 int VLen = vectors[0].Length;
                 for (int i = 1; i < ListLen; i++)

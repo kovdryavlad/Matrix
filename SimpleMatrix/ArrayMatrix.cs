@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -215,7 +216,7 @@ namespace SimpleMatrix
             return KMatrix;
         }
 
-        internal static double[][] SetMainDiagonal(double[][] A,double[] diagonalElements)
+        internal static double[][] SetMainDiagonal(double[][] A, double[] diagonalElements)
         {
             int ARows = A.Length;
             int ACols = A[0].Length;
@@ -396,6 +397,19 @@ namespace SimpleMatrix
                 result[i] = (double[])arr[i].Clone();
 
             return result;
+        }
+
+        //клонирование
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double[][] RemoveRow(double[][] arr, int rowIndex)
+        {
+            double[][] clone = ArrayMatrix.Clone(arr);
+
+            List<double[]> lst = clone.ToList();
+
+            lst.RemoveAt(rowIndex);
+
+            return lst.ToArray();
         }
     }
 }

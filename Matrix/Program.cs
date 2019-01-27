@@ -19,11 +19,14 @@ namespace Matrix
 
             });
 
-            var mClone = (SimpleMatrix.Matrix)m.Clone();
+            var mr = m.RemoveRow(1);
+            var mc = m.RemoveColumn(1);
             ;
-
-            double[][] arr = new[] { new[] { 0.0, 1 }, new[] { 2.0, 3 } };
-            var arrClone = (double[][])arr.Clone();
+            //var mClone = (SimpleMatrix.Matrix)m.Clone();
+            //;
+            //
+            //double[][] arr = new[] { new[] { 0.0, 1 }, new[] { 2.0, 3 } };
+            //var arrClone = (double[][])arr.Clone();
             //SimpleMatrix.Matrix a = new SimpleMatrix.Matrix(3, 3, new[] {2d,3,4,1,3,3,0,4,4});
             //Vector v = new Vector(new double[] { 20, 16, 20d });
             //var r = a.Solve(v);

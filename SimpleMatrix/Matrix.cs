@@ -20,7 +20,7 @@ namespace SimpleMatrix
 
    Класс операций с матрицами. Хранит в себе транспонирование, вычитание, сложение, произведение, преобразование деление и нахождение детерминанта.
    */
-    public class Matrix:ICloneable
+    public class Matrix : ICloneable
     {
         /// <summary>
         /// Сложение матриц
@@ -30,7 +30,7 @@ namespace SimpleMatrix
             if (A.CanAdd(B))
             {
                 double[][] SumMatrix = ArrayMatrix.Sum(A.data, B.data);
-        
+
                 return Create.New(SumMatrix);
             }
             else
@@ -50,8 +50,8 @@ namespace SimpleMatrix
             }
             else
                 throw new MatrixSubstructException();
-            
-            
+
+
         }
         //произведение
         /// <summary>
@@ -61,9 +61,9 @@ namespace SimpleMatrix
         static Matrix Multiply(Matrix A, Matrix B)
         {
             if (A.CanMultiply(B))
-            {   
+            {
                 return MultiplyN3(A, B);
-                
+
                 //return MultiplyN3Transpose(A, B);
             }
             else
@@ -125,7 +125,7 @@ namespace SimpleMatrix
         /// <returns>Новая матрица</returns>
         static Matrix Multiply(double k, Matrix B)
         {
-            double[][] CArr = ArrayMatrix.MultiplyOnk(k,B.data);
+            double[][] CArr = ArrayMatrix.MultiplyOnk(k, B.data);
             var Cmatrix = Matrix.Create.New(CArr);
             return Cmatrix;
         }
@@ -137,7 +137,7 @@ namespace SimpleMatrix
         /// <returns>Новая матрица</returns>
         static Matrix Divide(Matrix A, double k)
         {
-            double[][] CArr = ArrayMatrix.DivideOnk(A,k);
+            double[][] CArr = ArrayMatrix.DivideOnk(A, k);
             var Cmatrix = new Matrix(CArr);
             return Cmatrix;
         }
@@ -268,7 +268,7 @@ namespace SimpleMatrix
 
             int ARows = this.Rows;
             int ACols = this.Columns;
-            for (int i = 0; i <ARows ; i++)
+            for (int i = 0; i < ARows; i++)
                 for (int j = 0; j < ACols; j++)
                     if (data[i][j] != data[j][i])
                         return false;
@@ -317,9 +317,9 @@ namespace SimpleMatrix
             if (ColumnB < 0)
                 throw new ArgumentException("Индекс столбца не может быть меньше 0", "ColumnB");
             if (ColumnA > Columns)
-                throw new ArgumentException("Индекс столбца не может быть больше максимаольного индекса столбца в матрице", "ColumnA");
+                throw new ArgumentException("Индекс столбца не может быть больше максимального индекса столбца в матрице", "ColumnA");
             if (ColumnB > Columns)
-                throw new ArgumentException("Индекс столбца не может быть больше максимаольного индекса столбца в матрице", "ColumnB");
+                throw new ArgumentException("Индекс столбца не может быть больше максимального индекса столбца в матрице", "ColumnB");
 
             //метод
             var transp = Transpose();
@@ -339,7 +339,7 @@ namespace SimpleMatrix
             int rows = Rows;    //строк всего
             if (numberOfRow < 0 || numberOfRow >= rows)
                 throw new NonExtistRowException();
-            
+
             return new Vector(ArrayMatrix.GetRow(data, numberOfRow));
         }
         /// <summary>
@@ -356,6 +356,30 @@ namespace SimpleMatrix
             //так же обраюотать ошибки выхода за границы существующих столбцов и строк
 
             return new Vector(ArrayMatrix.GetColumn(data, numberOfColumn));
+        }
+
+        public Matrix RemoveRow(int rowIndex) {
+            //ошибки
+            if (rowIndex < 0)
+                throw new ArgumentException("Индекс строки не может быть меньше 0", "rowIndex");
+            if (rowIndex > Rows)
+                throw new ArgumentException("Индекс строки не может быть больше максимального индекса строки в матрице", "rowIndex");
+
+
+            return new Matrix(ArrayMatrix.RemoveRow(data, rowIndex));
+        }
+
+        public Matrix RemoveColumn(int columnIndex)
+        {
+            //ошибки
+            if (columnIndex < 0)
+                throw new ArgumentException("Индекс столбца не может быть меньше 0", "columnIndex");
+            if (columnIndex > Rows)
+                throw new ArgumentException("Индекс столбца не может быть больше максимального индекса строки в матрице", "columnIndex");
+
+            Matrix transpose = this.Transpose();
+            
+            return transpose.RemoveRow(columnIndex).Transpose();
         }
 
         /// <summary>

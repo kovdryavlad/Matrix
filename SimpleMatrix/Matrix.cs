@@ -20,6 +20,7 @@ namespace SimpleMatrix
 
    Класс операций с матрицами. Хранит в себе транспонирование, вычитание, сложение, произведение, преобразование деление и нахождение детерминанта.
    */
+    [Serializable]
     public class Matrix : ICloneable
     {
         /// <summary>

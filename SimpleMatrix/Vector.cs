@@ -14,6 +14,7 @@ namespace SimpleMatrix
  \warning Работа только с векторами
 
  Класс для работы с векторами. */
+    [Serializable]
     public class Vector:ICloneable
     {
         //единичный ли?

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SimpleCode.Algebra</id>
+    <version>0.9.0-beta</version>
+    <title>SimpleCode.Algebra</title>
+    <authors>Kovdrya Vlad</authors>
+    <owners>Kovdrya Vlad</owners>
+    <iconUrl>https://github.com/kovdryavlad/Matrix/tree/master/Algebra</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>For searching roots of polinoms by their coefficients</description>
+    <releaseNotes>Beta-release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Simple code, Algebra</tags>
+  </metadata>
+</package>

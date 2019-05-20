@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>SimpleCode.SimpleMatrix</id>
-    <version>0.9.0.3-beta</version>
+    <version>1.0.0.0</version>
     <title>SimpleCode.SimpleMatrix</title>
     <authors>Kovdrya Vlad</authors>
     <owners>Kovdrya Vlad</owners>
-    <repository type="git" url="https://github.com/kovdryavlad/Matrix/tree/master/SimpleMatrix" commit="df7b9bd4325864a5edfc53390f3e590781bdb9c4" />
+    <repository type="git" url="https://github.com/kovdryavlad/Matrix/tree/master/SimpleMatrix" commit="7bceedf7dc300c3c316657342e8ec6a37d22128b" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>for working with Matrix in .Net</description>
-    <releaseNotes>fix description 3nd time</releaseNotes>
+    <releaseNotes>Useful constructors. Release</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>Matrix</tags>
     <dependencies>

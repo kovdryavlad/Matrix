@@ -19,9 +19,7 @@ namespace Matrix
                 15,  57,  8,  8,
 
             });
-
-            SimpleMatrix.Matrix m1 = new SimpleMatrix.Matrix()
-
+            
             //var mr = m.RemoveRow(1);
             //var mc = m.RemoveColumn(1);
             ;

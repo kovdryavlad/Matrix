@@ -20,8 +20,7 @@ namespace Matrix
 
             });
 
-            SimpleMatrix.Matrix Inverse = m.Inverse();
-            ;
+            SimpleMatrix.Matrix m1 = new SimpleMatrix.Matrix()
 
             //var mr = m.RemoveRow(1);
             //var mc = m.RemoveColumn(1);

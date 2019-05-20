@@ -443,6 +443,24 @@ namespace SimpleMatrix
             return data;
         }
 
+        /// <summary>
+        /// For receiving matrix as two dimensional array
+        /// </summary>
+        /// <returns></returns>
+        public double[,] GetDataAsTwoDimensionalArray()
+        {
+            int rows = this.Rows;
+            int cols = this.Columns;
+
+            double[,] resultArray = new double[rows, cols];
+
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
+                    resultArray[i, j] = this.data[i][j];
+
+            return resultArray;
+        }
+
         //конструктор
         /// <summary>
         /// for creating square matrix with size = n

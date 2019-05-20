@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SimpleCode.SimpleMatrix</id>
+    <version>0.9.0-beta</version>
+    <title>SimpleCode.SimpleMatrix</title>
+    <authors>Kovdrya Vlad</authors>
+    <owners>Kovdrya Vlad</owners>
+    <projectUrl>https://github.com/kovdryavlad/Matrix/tree/master/SimpleMatrix</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>for working with Matrix in .Net</description>
+    <releaseNotes>Beta release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Matrix</tags>
+
+    <dependencies>
+      <dependency id="SimpleCode.Algebra" version="0.9.0-beta" />
+    </dependencies>
+    
+  </metadata>
+</package>

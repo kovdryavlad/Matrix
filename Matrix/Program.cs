@@ -11,16 +11,20 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-            SimpleMatrix.Matrix m = new SimpleMatrix.Matrix(3, 3, new[] {
+            SimpleMatrix.Matrix m = new SimpleMatrix.Matrix(4, 4, new[] {
 
-                 2,  -1,  1.0,
-                -1,   2, -1,
-                 0,   0,  1
+                2d,   3,  7,  5,
+                11,   5,  1,  6,
+                 8,   9,  8,  9,
+                15,  57,  8,  8,
 
             });
 
-            var mr = m.RemoveRow(1);
-            var mc = m.RemoveColumn(1);
+            SimpleMatrix.Matrix Inverse = m.Inverse();
+            ;
+
+            //var mr = m.RemoveRow(1);
+            //var mc = m.RemoveColumn(1);
             ;
             //var mClone = (SimpleMatrix.Matrix)m.Clone();
             //;

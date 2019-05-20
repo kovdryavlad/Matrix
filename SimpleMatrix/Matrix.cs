@@ -96,7 +96,6 @@ namespace SimpleMatrix
             return this * MatrixforVector;
         }
 
-
         //умножение матриц
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         static Matrix MultiplyN3(Matrix A, Matrix B)
@@ -444,7 +443,20 @@ namespace SimpleMatrix
             return data;
         }
 
-        //кнструктор
+        //конструктор
+        /// <summary>
+        /// for creating square matrix with size = n
+        /// </summary>
+        /// <param name="n">size of matrix</param>
+        public Matrix(int n) => this.data = Create.New(n).data;
+
+        /// <summary>
+        /// for creating matrix with m rows and n columns
+        /// </summary>
+        /// <param name="m">rows</param>
+        /// <param name="n">columns</param>
+        public Matrix(int m, int n) => this.data = Create.New(m, n).data;
+        
         /// <summary>
         /// Задание матрицы через зубчастый массив
         /// </summary>
@@ -453,6 +465,11 @@ namespace SimpleMatrix
         {
             data = (double[][])arr.Clone();
         }
+
+        /// <summary>
+        /// for creating matrix from two-dimentional array
+        /// </summary>
+        public Matrix(double[,] array) => this.data = Create.New(array).data;
 
         /// <summary>
         /// Задание матрицы через одномерный массив
@@ -549,7 +566,7 @@ namespace SimpleMatrix
             /// </summary>
             /// <param name="n">Размер матрицы</param>
             /// <returns>Новая матрица</returns>
-            public static Matrix New(int n)
+            internal static Matrix New(int n)
             {
                 return New(n, n);
             }
@@ -560,8 +577,7 @@ namespace SimpleMatrix
             /// <param name="columns">Количество колонок</param>
             /// <param name="rows">Количество рядков</param>
             /// <returns>Новая матрица</returns>
-
-            public static Matrix New(int rows, int columns)
+            internal static Matrix New(int rows, int columns)
             {
                 double[][] arr = ArrayMatrix.GetJaggedArray(rows, columns);
                 return new Matrix(arr);
@@ -572,7 +588,7 @@ namespace SimpleMatrix
             /// </summary>
             /// <param name="MatrixArray">Двумерный массив</param>
             /// <returns>Матриц полученая из массива</returns>
-            public static Matrix New(double[][] MatrixArray)
+            internal static Matrix New(double[][] MatrixArray)
             {
                 return new Matrix(MatrixArray);
             }
@@ -582,7 +598,7 @@ namespace SimpleMatrix
             /// </summary>
             /// <param name="MatrixArray">Массив</param>
             /// <returns>Матрица полученая из массива</returns>
-            public static Matrix New(double[,] MatrixArray)
+            internal static Matrix New(double[,] MatrixArray)
             { 
                 var Rows = MatrixArray.GetLength(0);
                 var Cols = MatrixArray.GetLength(1);
@@ -610,18 +626,6 @@ namespace SimpleMatrix
             }
 
             /// <summary>
-            /// Получение матрицы из одномерного массива
-            /// </summary>
-            /// <param name="rows">Строки</param>
-            /// <param name="columns">Столбцы</param>
-            /// <param name="MatrixAsOneDimArray">Одномерный массив</param>
-            /// <returns>Новая матрица</returns>
-            public static Matrix Identity(int rows, int columns, double[] MatrixAsOneDimArray)
-            {
-                return new Matrix(rows, columns, MatrixAsOneDimArray);
-            }
-
-            /// <summary>
             /// Создает диагональную матрицу
             /// </summary>
             /// <param name="arr">Массив диагональных элементов</param>
@@ -644,7 +648,7 @@ namespace SimpleMatrix
             }
 
             /// <summary>
-            /// Соединяет вектора в матрицу
+            /// Соединяет вектора в матрицу - по столбцам
             /// </summary>
             /// <param name="vectors">Список векторов</param>
             /// <returns>Новая матрица</returns>

@@ -2,18 +2,18 @@
 <package >
   <metadata>
     <id>SimpleCode.SimpleMatrix</id>
-    <version>0.9.0.2-beta</version>
+    <version>0.9.0.3-beta</version>
     <title>SimpleCode.SimpleMatrix</title>
     <authors>Kovdrya Vlad</authors>
     <owners>Kovdrya Vlad</owners>
     <repository type="git" url="https://github.com/kovdryavlad/Matrix/tree/master/SimpleMatrix" commit="df7b9bd4325864a5edfc53390f3e590781bdb9c4" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>for working with Matrix in .Net</description>
-    <releaseNotes>fix description 2nd time</releaseNotes>
+    <releaseNotes>fix description 3nd time</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>Matrix</tags>
     <dependencies>
-      <dependency id="SimpleCode.Algebra" version="0.9.0.1-beta" />
+      <dependency id="SimpleCode.Algebra" version="0.9.0.2-beta" />
     </dependencies>
     
   </metadata>

@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>SimpleCode.Algebra</id>
-    <version>0.9.0-beta</version>
+    <version>0.9.0.1-beta</version>
     <title>SimpleCode.Algebra</title>
     <authors>Kovdrya Vlad</authors>
     <owners>Kovdrya Vlad</owners>
-    <iconUrl>https://github.com/kovdryavlad/Matrix/tree/master/Algebra</iconUrl>
+    <repository type="git" url="https://github.com/kovdryavlad/Matrix/tree/master/Algebra" commit="1e33bdbf8c34b29508d7f3d2a35a684e9f1f39f0" />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>For searching roots of polinoms by their coefficients</description>
-    <releaseNotes>Beta-release</releaseNotes>
+    <releaseNotes>description fix</releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>Simple code, Algebra</tags>
   </metadata>

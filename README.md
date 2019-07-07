@@ -1,5 +1,5 @@
 # Matrix
-Class To work with matrix in .Net
+Class To work with matrices in .Net
 
 Installing:
 

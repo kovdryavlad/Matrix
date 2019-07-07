@@ -404,7 +404,7 @@ namespace SimpleMatrix
             if (column < 0 || column >= size)
                 throw new ArgumentException("Попытка доступа к несуществующему столбцу", "Column");
 
-            return new Matrix(ArrayMatrix.GetMinor(data, row, column));
+            return Math.Pow(-1, row+column)*(new Matrix(ArrayMatrix.GetMinor(data, row, column)));
         }
 
         /// <summary>

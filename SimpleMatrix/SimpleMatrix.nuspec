@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SimpleCode.SimpleMatrix</id>
-    <version>1.0.0.0</version>
+    <version>1.0.2</version>
     <title>SimpleCode.SimpleMatrix</title>
     <authors>Kovdrya Vlad</authors>
     <owners>Kovdrya Vlad</owners>
@@ -13,7 +13,7 @@
     <copyright>Copyright 2019</copyright>
     <tags>Matrix</tags>
     <dependencies>
-      <dependency id="SimpleCode.Algebra" version="0.9.0.2-beta" />
+      <dependency id="SimpleCode.Algebra" version="1.0.0" />
     </dependencies>
     
   </metadata>
